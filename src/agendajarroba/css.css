@@ -1,0 +1,11 @@
+/* 
+    Document   : css
+    Created on : 19/06/2013, 06:38:33 AM
+    Author     : 363418
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.autofill-text {
+    -fx-skin: "np.com.ngopal.control.AutoFillTextBoxSkin";
+}

@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="899.0000999999975" prefWidth="1383.000022070315" xmlns:fx="http://javafx.com/fxml" fx:controller="agendajarroba.VistaController">
+  <children>
+    <Pane id="productoP" layoutX="64.0" layoutY="165.0" prefHeight="831.0" prefWidth="917.0">
+      <children>
+        <TabPane layoutX="-62.0" layoutY="67.0" prefHeight="643.0" prefWidth="1343.0" tabClosingPolicy="UNAVAILABLE">
+          <tabs>
+            <Tab text="inventario">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="631.0" prefWidth="1410.0">
+                  <children>
+                    <VBox layoutX="14.0" layoutY="57.0" prefHeight="200.0" prefWidth="129.0">
+                      <children>
+                        <Button fx:id="pruductoBT" mnemonicParsing="false" onAction="#producto" prefHeight="65.0" prefWidth="129.0" text="producto">
+                          <font>
+                            <Font size="20.0" fx:id="x5" />
+                          </font>
+                        </Button>
+                        <Button fx:id="cambioBT" font="$x5" mnemonicParsing="false" onAction="#cambio" prefHeight="72.0" prefWidth="129.0" text="cambios" />
+                      </children>
+                    </VBox>
+                    <Pane id="CambioP" fx:id="cambioP" layoutX="178.0" layoutY="14.0" prefHeight="567.0" prefWidth="659.0" visible="false">
+                      <children>
+                        <Button fx:id="reciboBT" layoutX="158.0" layoutY="14.0" mnemonicParsing="false" onAction="#recibir" prefHeight="41.0" prefWidth="144.0" text="Recibir">
+                          <font>
+                            <Font size="15.0" fx:id="x2" />
+                          </font>
+                        </Button>
+                        <Button fx:id="reporteBT" font="$x2" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#reportar" prefHeight="41.0" prefWidth="144.0" text="Reportar" />
+                        <Pane id="ReporteP" fx:id="reporteP" layoutX="15.0" layoutY="77.0" prefHeight="255.0" prefWidth="472.0" visible="false">
+                          <children>
+                            <Label layoutX="14.0" layoutY="14.0" text="por favor agregue los datos del producto que desea reportar" />
+                            <Label layoutX="14.0" layoutY="36.0" text="id producto:">
+                              <font>
+                                <Font size="14.0" fx:id="x3" />
+                              </font>
+                            </Label>
+                            <TextField id="id" fx:id="idreporteTF" layoutX="14.0" layoutY="59.0" prefWidth="200.0" />
+                            <Label font="$x3" layoutX="14.0" layoutY="91.0" text="Nombre producto:" />
+                            <TextField id="nomreciboTF" fx:id="nomreporteTF" layoutX="14.0" layoutY="114.0" prefWidth="200.0" />
+                            <Label font="$x3" layoutX="14.0" layoutY="153.0" text="Cantidad:" />
+                            <TextField id="cantrecibo" fx:id="cantreporteTF" layoutX="14.0" layoutY="176.0" prefWidth="200.0" />
+                            <Button fx:id="aceptarReporteBT" layoutX="45.0" layoutY="206.0" mnemonicParsing="false" onAction="#valreporte" prefHeight="26.27734375" prefWidth="73.0" text="aceptar" />
+                            <Label fx:id="idreporteval" layoutX="251.0" layoutY="62.0" text="por favor ingrese un nombre o id correcto" visible="false" />
+                            <Label fx:id="cantreporteval" layoutX="251.0" layoutY="179.0" text="por favor ingrese una cantidad" visible="false" />
+                          </children>
+                        </Pane>
+                        <Pane id="ReporteP" fx:id="reciboP" layoutX="14.0" layoutY="70.0" prefHeight="286.0" prefWidth="458.0" visible="false">
+                          <children>
+                            <Label id="cantreporteval" fx:id="cantreciboval" layoutX="223.0" layoutY="208.0" text="por favor ingrese una cantidad" visible="false" />
+                            <Label font="$x3" layoutX="14.0" layoutY="109.0" text="Nombre producto:" />
+                            <Label layoutX="13.0" layoutY="14.0" text="por favor agregue los datos del producto que desea recibir" />
+                            <Label font="$x3" layoutX="13.0" layoutY="45.0" text="id producto:" />
+                            <TextField id="id" fx:id="idreciboTF" layoutX="13.0" layoutY="74.0" prefWidth="200.0" />
+                            <TextField fx:id="nomreciboTF" layoutX="13.0" layoutY="143.0" prefWidth="200.0" />
+                            <Label font="$x3" layoutX="14.0" layoutY="175.0" text="Cantidad:" />
+                            <TextField id="cantrecibo" fx:id="cantreciboTF" layoutX="14.0" layoutY="202.0" prefWidth="200.0" />
+                            <Label id="idreporteval" fx:id="idreciboval" layoutX="221.0" layoutY="77.0" text="por favor ingrese un nombre o id correcto" visible="false" />
+                            <Button fx:id="aceptarResiboBT" layoutX="17.0" layoutY="244.0" mnemonicParsing="false" onAction="#valrecibo" text="aceptar" />
+                          </children>
+                        </Pane>
+                      </children>
+                    </Pane>
+                    <Pane id="producto" fx:id="productoP" layoutX="125.0" layoutY="10.0" prefHeight="614.0" prefWidth="1331.0" visible="false">
+                      <children>
+                        <SplitPane dividerPositions="0.639662447257384" focusTraversable="true" layoutX="29.0" prefHeight="614.0000999999975" prefWidth="1187.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="635.0" prefWidth="856.0">
+                              <children>
+                                <TableView fx:id="tablaPersonas" layoutX="-1.0" prefHeight="498.0" prefWidth="755.0">
+                                  <columns>
+                                    <TableColumn editable="false" minWidth="0.0" prefWidth="126.0" text="id producto" fx:id="nombreCL" />
+                                    <TableColumn prefWidth="150.0" text="Nombre Producto" fx:id="apellidoCL" />
+                                    <TableColumn text="iva" fx:id="edadCL" />
+                                    <TableColumn prefWidth="130.0" text="valor unitario" fx:id="telefonoCL" />
+                                    <TableColumn prefWidth="130.0" text="stock minimo" fx:id="telefono1CL" />
+                                    <TableColumn minWidth="0.0" prefWidth="167.0" text="stock Maximo" fx:id="telefono2CL" />
+                                  </columns>
+                                </TableView>
+                              </children>
+                            </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="613.0" prefWidth="424.9998779296875">
+                              <children>
+                                <Label layoutX="15.0" layoutY="14.0" text="id Producto:">
+                                  <font>
+                                    <Font name="System Bold Italic" size="15.0" fx:id="x1" />
+                                  </font>
+                                </Label>
+                                <Label font="$x1" layoutX="15.0" layoutY="224.0" text="Valor Unitario:" />
+                                <Label font="$x1" layoutX="15.0" layoutY="151.0" text="Iva:" />
+                                <Label font="$x1" layoutX="15.0" layoutY="83.0" text="Nombre:" />
+                                <TextField fx:id="nombreTF" layoutX="15.0" layoutY="38.0" prefHeight="26.0" prefWidth="239.0" />
+                                <TextField fx:id="apellidoTF" layoutX="14.0" layoutY="107.0" prefHeight="26.0" prefWidth="239.0" />
+                                <TextField fx:id="edadTF" layoutX="15.0" layoutY="174.0" prefHeight="26.0" prefWidth="239.0" />
+                                <TextField fx:id="telefonoTF" layoutX="15.0" layoutY="253.0" prefHeight="26.0" prefWidth="239.0" />
+                                <Button fx:id="aniadirBT" font="$x1" layoutX="9.0" layoutY="429.0" mnemonicParsing="false" onAction="#aniadir" prefHeight="26.0" prefWidth="234.0" text="Añadir" />
+                                <Button fx:id="modificarBT" font="$x1" layoutX="10.0" layoutY="472.0" mnemonicParsing="false" onAction="#modificar" prefHeight="26.0" prefWidth="234.0" text="Modificar" />
+                                <Button fx:id="eliminarBT" font="$x1" layoutX="10.0" layoutY="515.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="26.0" prefWidth="234.0" text="Eliminar" />
+                                <Button fx:id="nuevoBT" font="$x1" layoutX="10.0" layoutY="553.0" mnemonicParsing="false" onAction="#nuevo" prefHeight="45.0" prefWidth="234.0" text="NUEVO !!!" />
+                                <Label font="$x1" layoutX="15.0" layoutY="291.0" text="Stock Minimo:" />
+                                <TextField id="telefonoTF" fx:id="telefono1TF" layoutX="15.0" layoutY="320.0" prefHeight="26.0" prefWidth="239.0" />
+                                <Label font="$x1" layoutX="15.0" layoutY="356.0" text="Stock Maximo:" />
+                                <TextField id="telefonoTF" fx:id="telefono2TF" layoutX="15.0" layoutY="385.0" prefHeight="26.0" prefWidth="239.0" />
+                                <Label fx:id="valid" layoutX="254.0" layoutY="44.0" text="debe ingresar el id" visible="false" />
+                                <Label fx:id="nomval" layoutX="253.0" layoutY="113.0" text="debe ingresar el nombre" visible="false" />
+                                <Label fx:id="ival" layoutX="254.0" layoutY="180.0" text="debe ingresar el iva" visible="false" />
+                                <Label fx:id="unval" layoutX="254.0" layoutY="259.0" text="ingrese un valor" visible="false" />
+                                <Label fx:id="stock_mval" layoutX="254.0" layoutY="326.0" text="ingrese un valor" visible="false" />
+                                <Label fx:id="stock_maxval" layoutX="254.0" layoutY="391.0" text="ingrese un valor" visible="false" />
+                                <Label fx:id="habval" layoutX="134.0" layoutY="487.0" text="seleccione una opcion" visible="false" />
+                              </children>
+                            </AnchorPane>
+                          </items>
+                        </SplitPane>
+                      </children>
+                    </Pane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="factura">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <VBox layoutX="14.0" layoutY="14.0" prefHeight="223.0" prefWidth="141.0">
+                      <children>
+                        <Button mnemonicParsing="false" text="COMPRA" />
+                        <Button mnemonicParsing="false" text="VENTA" />
+                      </children>
+                    </VBox>
+                    <ScrollPane layoutX="169.0" layoutY="14.0" prefHeight="803.0" prefWidth="674.0">
+                      <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="802.0" prefWidth="674.0">
+                          <children>
+                            <Label layoutX="66.0" layoutY="14.0" text="ID factura" />
+                            <Label layoutX="310.0" layoutY="17.0" text="Fecha" />
+                            <TextField layoutX="14.0" layoutY="39.0" prefWidth="200.0" />
+                            <TextField layoutX="234.0" layoutY="39.0" prefWidth="200.0" />
+                            <GridPane layoutX="18.0" layoutY="90.0" prefHeight="97.0" prefWidth="619.0">
+                              <children>
+                                <Label text="id producto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="iva" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label text="valor unitario" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label text="cantidad" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                <Label text="subtotal" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="64.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="86.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane layoutX="18.0" layoutY="187.0" prefHeight="97.0" prefWidth="619.0">
+                              <children>
+                                <Label text="id producto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="iva" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label text="valor unitario" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label text="cantidad" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                <Label text="subtotal" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="64.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="86.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane layoutX="14.0" layoutY="282.0" prefHeight="97.0" prefWidth="619.0">
+                              <children>
+                                <Label text="id producto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="iva" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label text="valor unitario" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label text="cantidad" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                <Label text="subtotal" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="64.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="86.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane layoutX="14.0" layoutY="373.0" prefHeight="97.0" prefWidth="619.0">
+                              <children>
+                                <Label text="id producto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="iva" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label text="valor unitario" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label text="cantidad" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                <Label text="subtotal" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="64.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="86.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane layoutX="14.0" layoutY="470.0" prefHeight="97.0" prefWidth="619.0">
+                              <children>
+                                <Label text="id producto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="iva" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label text="valor unitario" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label text="cantidad" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                <Label text="subtotal" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="64.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="86.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane layoutX="10.0" layoutY="565.0" prefHeight="97.0" prefWidth="619.0">
+                              <children>
+                                <Label text="id producto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="iva" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label text="valor unitario" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label text="cantidad" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                <Label text="subtotal" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="64.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="86.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </ScrollPane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="reporte">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="configuracion">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="719.0" prefWidth="1343.0">
+                  <children>
+                    <VBox layoutX="14.0" layoutY="14.0" prefHeight="214.0" prefWidth="131.0">
+                      <children>
+                        <Button id="pruductoBT" fx:id="cuentasBT" font="$x5" mnemonicParsing="false" onMouseEntered="#cuenta" prefHeight="65.0" prefWidth="129.0" text="cuentas" />
+                        <Button id="cambioBT" font="$x5" mnemonicParsing="false" onMouseEntered="#proveedor" prefHeight="72.0" prefWidth="129.0" text="proveedor" />
+                      </children>
+                    </VBox>
+                    <Pane fx:id="registroCP" layoutX="222.0" layoutY="6.0" prefHeight="608.0" prefWidth="559.0" visible="false">
+                      <children>
+                        <Label layoutX="26.0" layoutY="37.0" text="nombre de usuario" />
+                        <Label layoutX="26.0" layoutY="101.0" text="contraseña" />
+                        <Label layoutX="26.0" layoutY="163.0" text="ingrese de nuevo la contraseña" />
+                        <TextField fx:id="nomCTF" layoutX="26.0" layoutY="65.0" prefWidth="200.0" />
+                        <PasswordField fx:id="contCTF" layoutX="26.0" layoutY="127.0" prefWidth="200.0" />
+                        <PasswordField fx:id="recontCTF" layoutX="27.0" layoutY="196.0" prefWidth="200.0" />
+                        <Line endX="438.0" endY="-3.0" layoutX="115.0" layoutY="299.0" startX="-111.0" startY="-2.0" />
+                        <Label layoutX="26.0" layoutY="2.0" text="Datos de la Cuenta">
+                          <font>
+                            <Font name="System Bold" size="15.0" fx:id="x4" />
+                          </font>
+                        </Label>
+                        <Label layoutX="24.0" layoutY="339.0" text="nombre" />
+                        <Label layoutX="24.0" layoutY="402.0" text="apellido" />
+                        <TextField id="nomCTF" fx:id="nom2CTF" layoutX="24.0" layoutY="367.0" prefWidth="200.0" />
+                        <PasswordField id="contCTF" fx:id="apeCTF" layoutX="24.0" layoutY="427.0" prefWidth="200.0" />
+                        <Label layoutX="27.0" layoutY="462.0" text="telefono" />
+                        <Label layoutX="27.0" layoutY="525.0" text="direccion" />
+                        <TextField id="nomCTF" fx:id="telCTF" layoutX="27.0" layoutY="489.0" prefWidth="200.0" />
+                        <PasswordField id="contCTF" fx:id="dirCTF" layoutX="27.0" layoutY="550.0" prefWidth="200.0" />
+                        <Label font="$x4" layoutX="24.0" layoutY="303.0" text="Datos Personales" />
+                        <Button id="valcrearcuenta" layoutX="14.0" layoutY="576.0" mnemonicParsing="false" onAction="#valcrearcuenta" text="aceptar" />
+                        <Label fx:id="valnomC" layoutX="280.0" layoutY="69.0" text="por favor ingrese un nombre de usuario" visible="false" />
+                        <Label fx:id="valcontC" layoutX="280.0" layoutY="131.0" text="por favor ingrese una contraseña" visible="false" />
+                        <Label fx:id="valrecontC" layoutX="280.0" layoutY="200.0" text="re-ingrese de nuevo la contraseña" visible="false" />
+                        <Label fx:id="valnom2C" layoutX="280.0" layoutY="371.0" text="por favor ingrese su nombre" visible="false" />
+                        <Label fx:id="valapeC" layoutX="280.0" layoutY="431.0" text="por favor ingrese su apellido" visible="false" />
+                        <Label fx:id="valtelC" layoutX="280.0" layoutY="493.0" text="por favor ingrese un telefono" visible="false" />
+                        <Label fx:id="valdirC" layoutX="279.0" layoutY="553.0" text="por favor ingrese una direccion" visible="false" />
+                        <Label fx:id="valcoinC" layoutX="254.0" layoutY="199.0" text="las contraseñas no coinciden" visible="false" />
+                      </children>
+                    </Pane>
+                    <Pane id="registroCP" fx:id="modificarP" layoutX="258.0" layoutY="11.0" prefHeight="608.0" prefWidth="559.0" visible="false">
+                      <children>
+                        <Label layoutX="26.0" layoutY="37.0" text="nombre de usuario" />
+                        <Label layoutX="26.0" layoutY="101.0" text="antigua contraseña" />
+                        <Label layoutX="26.0" layoutY="163.0" text="nueva contraseña" />
+                        <PasswordField id="contCTF" fx:id="contMTF" disable="true" layoutX="26.0" layoutY="127.0" prefWidth="200.0" />
+                        <PasswordField id="recontCTF" fx:id="recontMTF" disable="true" layoutX="27.0" layoutY="196.0" prefWidth="200.0" />
+                        <Line endX="438.0" endY="-3.0" layoutX="115.0" layoutY="299.0" startX="-111.0" startY="-2.0" />
+                        <Label font="$x4" layoutX="26.0" layoutY="2.0" text="Datos de la Cuenta" />
+                        <Label layoutX="24.0" layoutY="339.0" text="nombre" />
+                        <Label layoutX="24.0" layoutY="402.0" text="apellido" />
+                        <TextField id="nomCTF" fx:id="nomMTF" disable="true" layoutX="24.0" layoutY="367.0" prefWidth="200.0" />
+                        <Label layoutX="27.0" layoutY="462.0" text="telefono" />
+                        <Label layoutX="27.0" layoutY="525.0" text="direccion" />
+                        <TextField id="nomCTF" fx:id="telMTF" disable="true" layoutX="27.0" layoutY="489.0" prefWidth="200.0" />
+                        <Label font="$x4" layoutX="24.0" layoutY="303.0" text="Datos Personales" />
+                        <Button id="valcrearcuenta" layoutX="14.0" layoutY="576.0" mnemonicParsing="false" onAction="#valmodificarcuenta" text="aceptar" />
+                        <Label id="valnom2C" fx:id="valnomM" layoutX="280.0" layoutY="371.0" text="por favor ingrese un nombre" visible="false" />
+                        <Label id="valapeC" fx:id="valapeM" layoutX="280.0" layoutY="431.0" text="por favor ingrese su apellido" visible="false" />
+                        <Label id="valtelC" fx:id="valtelM" layoutX="280.0" layoutY="493.0" text="por favor ingrese su telefono" visible="false" />
+                        <Label id="valdirC" fx:id="valdirM" layoutX="279.0" layoutY="553.0" text="por favor ingrese su direccion" visible="false" />
+                        <TextField fx:id="dirMTF" disable="true" layoutX="24.0" layoutY="548.0" prefWidth="200.0" />
+                        <ComboBox fx:id="nomCH" layoutX="27.0" layoutY="66.0" onAction="#ModificarS">
+                          <items>
+                            <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Daniel" />
+                              <String fx:value="Leonardo" />
+                              <String fx:value="Faber" />
+                            </FXCollections>
+                          </items>
+                        </ComboBox>
+                        <TextField fx:id="apeMTF" disable="true" layoutX="26.0" layoutY="425.0" prefWidth="200.0" />
+                      </children>
+                    </Pane>
+                    <Pane id="registroCP" fx:id="proveedorCP" layoutX="197.0" layoutY="14.0" prefHeight="608.0" prefWidth="559.0" visible="false">
+                      <children>
+                        <Label layoutX="26.0" layoutY="37.0" text="nombre de la empresa" />
+                        <Label layoutX="26.0" layoutY="101.0" text="telefono" />
+                        <Label layoutX="26.0" layoutY="163.0" text="E-mail" />
+                        <TextField id="nomCTF" fx:id="nomEmTF" layoutX="26.0" layoutY="65.0" prefWidth="200.0" />
+                        <PasswordField id="contCTF" fx:id="telEmTF" layoutX="26.0" layoutY="127.0" prefWidth="200.0" />
+                        <PasswordField id="recontCTF" fx:id="emailEmTF" layoutX="27.0" layoutY="196.0" prefWidth="200.0" />
+                        <Line endX="438.0" endY="-3.0" layoutX="115.0" layoutY="299.0" startX="-111.0" startY="-2.0" />
+                        <Label font="$x4" layoutX="26.0" layoutY="2.0" text="Datos de el proveedor" />
+                        <Label layoutX="24.0" layoutY="339.0" text="nombre" />
+                        <Label layoutX="24.0" layoutY="402.0" text="apellido" />
+                        <TextField id="nomCTF" fx:id="nomContTF" layoutX="24.0" layoutY="367.0" prefWidth="200.0" />
+                        <PasswordField id="contCTF" fx:id="apeContTF" layoutX="24.0" layoutY="427.0" prefWidth="200.0" />
+                        <Label layoutX="27.0" layoutY="462.0" text="E-mail" />
+                        <TextField id="nomCTF" fx:id="emailContTF" layoutX="27.0" layoutY="489.0" prefWidth="200.0" />
+                        <Label font="$x4" layoutX="24.0" layoutY="303.0" text="Datos Contacto" />
+                        <Button id="valcrearcuenta" layoutX="24.0" layoutY="533.0" mnemonicParsing="false" onAction="#valcrearproveedor" text="aceptar" />
+                        <Label id="valnomC" fx:id="valnomEm" layoutX="280.0" layoutY="68.0" text="por favor ingrese el nombre de la empresa" visible="false" />
+                        <Label id="valcontC" fx:id="valtelEm" layoutX="280.0" layoutY="131.0" text="por favor ingrese un telefono" visible="false" />
+                        <Label id="valnom2C" fx:id="valnomCont" layoutX="280.0" layoutY="371.0" text="por favor ingrese un nombre" visible="false" />
+                        <Label id="valapeC" fx:id="valapeCont" layoutX="280.0" layoutY="431.0" text="por favor ingrese un apellido" visible="false" />
+                        <Label layoutX="26.0" layoutY="239.0" text="Url" />
+                        <PasswordField id="recontCTF" fx:id="urlEmTF" layoutX="27.0" layoutY="263.0" prefWidth="200.0" />
+                      </children>
+                    </Pane>
+                    <VBox fx:id="emergenteC" layoutX="145.0" layoutY="14.0" prefHeight="72.0" prefWidth="82.0" visible="false">
+                      <children>
+                        <Button id="crear" fx:id="crearCBT" minHeight="15.9609375" mnemonicParsing="false" onAction="#regi" prefHeight="22.0" prefWidth="70.0" text="crear" />
+                        <Button fx:id="modificarCBT" mnemonicParsing="false" onAction="#modificarC" text="modificar" />
+                        <Button id="eleiminarCBT" fx:id="eliminarCBT" mnemonicParsing="false" prefWidth="70.0" text="eliminar" />
+                      </children>
+                    </VBox>
+                    <VBox id="emergenteC" fx:id="emergenteP" layoutX="145.0" layoutY="79.0" prefHeight="72.0" prefWidth="82.0" visible="false">
+                      <children>
+                        <Button id="crear" minHeight="15.9609375" mnemonicParsing="false" onAction="#registroP" prefHeight="22.0" prefWidth="70.0" text="crear" />
+                        <Button id="modificarCBT" mnemonicParsing="false" onAction="#modPP" text="modificar" />
+                        <Button id="eleiminarCBT" mnemonicParsing="false" prefWidth="70.0" text="eliminar" />
+                      </children>
+                    </VBox>
+                    <Pane id="registroCP" fx:id="modificarPP" layoutX="239.0" layoutY="14.0" prefHeight="608.0" prefWidth="559.0" visible="false">
+                      <children>
+                        <Label layoutX="26.0" layoutY="37.0" text="nombre de Proveedor" />
+                        <Label layoutX="26.0" layoutY="101.0" text="nombre Empresa" />
+                        <Label layoutX="26.0" layoutY="163.0" text="telefono" />
+                        <Line endX="438.0" endY="-3.0" layoutX="115.0" layoutY="305.0" startX="-111.0" startY="-2.0" />
+                        <Label font="$x4" layoutX="26.0" layoutY="2.0" text="Datos del Proveedor" />
+                        <Label layoutX="24.0" layoutY="339.0" text="nombre" />
+                        <Label layoutX="24.0" layoutY="402.0" text="apellido" />
+                        <TextField id="nomCTF" fx:id="nomContMTF" disable="true" layoutX="24.0" layoutY="367.0" prefWidth="200.0" />
+                        <Label layoutX="27.0" layoutY="462.0" text="telefono" />
+                        <Label layoutX="27.0" layoutY="525.0" text="correo" />
+                        <TextField id="nomCTF" fx:id="telContMTF" disable="true" layoutX="27.0" layoutY="489.0" prefWidth="200.0" />
+                        <Label font="$x4" layoutX="24.0" layoutY="309.0" text="Datos Contacto" />
+                        <Button id="valcrearcuenta" layoutX="14.0" layoutY="576.0" mnemonicParsing="false" onAction="#valmodificarproveedor" text="aceptar" />
+                        <Label id="valcontC" fx:id="valnomProveedor" layoutX="280.0" layoutY="131.0" text="por favor ingrese un nombre" visible="false" />
+                        <Label id="valrecontC" fx:id="valtelProveedor" layoutX="280.0" layoutY="200.0" text="por favor ingrese un telefono" visible="false" />
+                        <Label id="valnom2C" fx:id="valnomContM" layoutX="280.0" layoutY="371.0" text="por favor ingrese un nombre" visible="false" />
+                        <Label id="valapeC" fx:id="valapeContM" layoutX="280.0" layoutY="431.0" text="por favor ingrese su apellido" visible="false" />
+                        <Label id="valtelC" fx:id="valtelContM" layoutX="280.0" layoutY="493.0" text="por favor ingrese un telefono" visible="false" />
+                        <Label id="valdirC" fx:id="valcorreoContM" layoutX="279.0" layoutY="553.0" text="por favor ingrese una direccion de correo" visible="false" />
+                        <Label id="valdirC" fx:id="valcorreoProveedor" layoutX="280.0" layoutY="273.0" text="por favor ingrese una direccion de correo" visible="false" />
+                        <TextField id="dirMTF" fx:id="emailContMTF" disable="true" layoutX="24.0" layoutY="548.0" prefWidth="200.0" />
+                        <ComboBox id="nomCH" fx:id="provCH" layoutX="26.0" layoutY="66.0" onAction="#Modificarproveedor">
+                          <items>
+                            <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Frito lay" />
+                              <String fx:value="Bavaria" />
+                              <String fx:value="Panda Pan" />
+                            </FXCollections>
+                          </items>
+                        </ComboBox>
+                        <TextField id="apeMTF" fx:id="apeContMTF" disable="true" layoutX="26.0" layoutY="425.0" prefWidth="200.0" />
+                        <TextField id="nomETF" fx:id="nomPMTF" disable="true" layoutX="27.0" layoutY="126.0" prefWidth="200.0" />
+                        <TextField id="telETF" fx:id="telPMTF" disable="true" layoutX="27.0" layoutY="198.0" prefWidth="200.0" />
+                        <Label layoutX="27.0" layoutY="232.0" text="E-mail" />
+                        <TextField id="emailTF" fx:id="emailPTF" disable="true" layoutX="28.0" layoutY="267.0" prefWidth="200.0" />
+                      </children>
+                    </Pane>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+      </children>
+    </Pane>
+    <Pane layoutX="50.0" layoutY="14.0" prefHeight="120.0" prefWidth="711.0">
+      <children>
+        <Label layoutX="356.0" layoutY="21.0" text="Calle 108 #67 - 12 - Tejelo &quot; Gratamira &quot;" />
+        <Label layoutX="356.0" layoutY="52.0" text="Info: 320 7 10 49 94" />
+        <Label layoutX="356.0" layoutY="80.0" text="Medellín - Colombia" />
+        <ImageView fitHeight="118.34000396728516" fitWidth="212.58683563670994" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@../imagenes/logo_salsipuedes_pequeño.png" preserveRatio="false" smooth="false" />
+          </image>
+        </ImageView>
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>

@@ -1,0 +1,1755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="ventanaprincipal" prefHeight="680.0" prefWidth="1200.0" styleClass="fondo" xmlns:fx="http://javafx.com/fxml" fx:controller="agendajarroba.VistaController">
+  <children>
+    <Pane id="productoP" fx:id="administradorLog" prefHeight="458.0" prefWidth="919.0" visible="true" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="279.0" AnchorPane.topAnchor="167.0">
+      <children>
+        <TabPane layoutX="0.0" layoutY="0.0" prefHeight="590.9998779296875" prefWidth="1465.0" tabClosingPolicy="UNAVAILABLE" visible="true">
+          <tabs>
+            <Tab text="inventario">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="525.0" prefWidth="1479.0">
+                  <children>
+                    <Accordion layoutX="14.0" layoutY="14.0" minWidth="836.0" prefWidth="1401.0">
+                      <expandedPane>
+                        <TitledPane fx:id="x5" animated="false" prefWidth="1279.0" text="Producto">
+                          <content>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="394.0" prefWidth="1327.0">
+                              <children>
+                                <Pane id="producto" fx:id="productoP" prefHeight="420.0" prefWidth="1331.0" visible="true" AnchorPane.bottomAnchor="263.0" AnchorPane.rightAnchor="-4.0">
+                                  <children>
+                                    <SplitPane dividerPositions="0.5975135975135976" focusTraversable="true" layoutX="-63.0" layoutY="-2.0" prefHeight="670.999977929685" prefWidth="1289.0" visible="true">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="634.0" prefWidth="690.0" visible="true">
+                                          <children>
+                                            <TableView fx:id="tablaPersonas" layoutX="-1.0" layoutY="293.0" prefHeight="303.0" prefWidth="715.0">
+                                              <columns>
+                                                <TableColumn editable="false" maxWidth="5000.0" minWidth="0.0" prefWidth="71.0" text="id producto" fx:id="nombreCL" />
+                                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="79.0" text="Nombre" fx:id="apellidoCL" />
+                                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="37.0" text="Valor" fx:id="edadCL" />
+                                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="71.0" text="marca" fx:id="telefonoCL" />
+                                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="68.0" text="medida" fx:id="Colmedida" />
+                                                <TableColumn prefWidth="75.0" text="presentacion" fx:id="colPresentacion" />
+                                                <TableColumn prefWidth="75.0" text="clasificacion" fx:id="colClasificacion" />
+                                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="87.0" text="stock minimo" fx:id="telefono1CL" />
+                                                <TableColumn maxWidth="5000.0" minWidth="0.0" prefWidth="89.0" text="stock Maximo" fx:id="telefono2CL" />
+                                                <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="61.0" text="estado" fx:id="EstadoCL" />
+                                              </columns>
+                                            </TableView>
+                                          </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                          <children>
+                                            <GridPane layoutX="0.0" layoutY="297.0" prefHeight="598.0" prefWidth="537.0">
+                                              <children>
+                                                <TextField fx:id="nombreTF" disable="true" prefHeight="26.0" prefWidth="239.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label text="Nombre:" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                  <font>
+                                                    <Font name="System Bold Italic" size="15.0" fx:id="x1" />
+                                                  </font>
+                                                </Label>
+                                                <TextField fx:id="apellidoTF" prefHeight="22.000099999997474" prefWidth="179.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label font="$x1" text="Valor Unitario:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <TextField fx:id="edadTF" editable="true" prefHeight="26.0" prefWidth="239.0" promptText="" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label font="$x1" text="estado:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <ComboBox id="valEstado" fx:id="estadoCB" prefHeight="21.0" prefWidth="240.0" promptText="" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                  <items>
+                                                    <FXCollections fx:factory="observableArrayList" />
+                                                  </items>
+                                                </ComboBox>
+                                                <Label fx:id="valid" text="debe ingresar el id" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <Label fx:id="nomval" text="debe ingresar el nombre" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Label id="tamañomarca" fx:id="ival" text="tamaño no valido" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Label id="tamañomarca" fx:id="unval" text="tamaño no valido" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                                <Label id="ival" text="debe ingresar el iva" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                                <Label id="valEstado" text="seleccione un estado" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                                <Label id="tamañomarca" fx:id="tamañoIva" text="tamaño no valido" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                                                <Label id="unval" text="ingrese un valor" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                                                <Label font="$x1" text="id Producto:" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                                <TextField id="telefonoTF" fx:id="telefono2TF" prefHeight="26.0" prefWidth="239.0" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                                                <Label font="$x1" text="Stock Maximo:" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                                                <TextField id="telefonoTF" fx:id="telefono1TF" prefHeight="26.0" prefWidth="239.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                                                <Label font="$x1" text="Stock Minimo:" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                                                <ComboBox fx:id="comboClasificacion" prefWidth="199.0" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                                                  <items>
+                                                    <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="Item 1" />
+                                                      <String fx:value="Item 2" />
+                                                      <String fx:value="Item 3" />
+                                                    </FXCollections>
+                                                  </items>
+                                                </ComboBox>
+                                                <Label font="$x1" text="Clasificacion:" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                                                <Label font="$x1" text="marca:" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                                <ComboBox fx:id="comboMarca" prefWidth="199.0" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                                  <items>
+                                                    <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="Item 1" />
+                                                      <String fx:value="Item 2" />
+                                                      <String fx:value="Item 3" />
+                                                    </FXCollections>
+                                                  </items>
+                                                </ComboBox>
+                                                <Label font="$x1" text="Medida" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                                                <ComboBox fx:id="comoMedida" prefWidth="199.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                                                  <items>
+                                                    <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="Item 1" />
+                                                      <String fx:value="Item 2" />
+                                                      <String fx:value="Item 3" />
+                                                    </FXCollections>
+                                                  </items>
+                                                </ComboBox>
+                                                <Label font="$x1" text="Presentacion" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <ComboBox fx:id="comboPresentacion" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                  <items>
+                                                    <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="Item 1" />
+                                                      <String fx:value="Item 2" />
+                                                      <String fx:value="Item 3" />
+                                                    </FXCollections>
+                                                  </items>
+                                                </ComboBox>
+                                                <Button fx:id="aniadirBT" font="$x1" mnemonicParsing="false" onAction="#aniadir" prefHeight="26.0" prefWidth="234.0" text="Añadir" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Button fx:id="modificarBT" font="$x1" mnemonicParsing="false" onAction="#modificar" prefHeight="26.0" prefWidth="234.0" text="Modificar" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+                                                <Button fx:id="nuevoBT" font="$x1" minHeight="-1.0" mnemonicParsing="false" onAction="#nuevo" prefHeight="26.0" prefWidth="234.0" text="Nuevo" GridPane.columnIndex="5" GridPane.rowIndex="11" />
+                                                <Label fx:id="stock_mval" text="ingrese un valor" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+                                                <Label fx:id="stock_maxval" text="ingrese un valor" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="9" />
+                                                <Label id="tamañomarca" text="tamaño no valido" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="9" />
+                                                <Label id="tamañomarca" fx:id="nombreTamaño" text="tamaño no valido" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <Label fx:id="tamañoStock_m" text="tamaño no valido" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+                                                <Label fx:id="laberEstado" text="Seleccione una opcion" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                                <Label fx:id="labelPresentacion" text="Seleccione una opcion" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                                                <Label fx:id="labelMarca" text="Seleccione una opcion" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                                <Label fx:id="labelMedida" text="Seleccione una opcion" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                                                <Label fx:id="labelClasificacion" text="Seleccione una opcion" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                                              </children>
+                                              <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="18.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="126.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="0.0" prefWidth="12.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="10.0" prefWidth="121.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="12.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.0" minWidth="10.0" prefWidth="107.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="141.0" />
+                                              </columnConstraints>
+                                              <rowConstraints>
+                                                <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                                              </rowConstraints>
+                                            </GridPane>
+                                          </children>
+                                        </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                  </children>
+                                </Pane>
+                              </children>
+                            </AnchorPane>
+                          </content>
+                        </TitledPane>
+                      </expandedPane>
+                      <panes>
+                        <TitledPane fx:id="x9" animated="false" prefHeight="543.0" prefWidth="1331.0" text="Cambios">
+                          <content>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                <Pane id="CambioP" fx:id="cambioP" disable="false" layoutX="286.0" layoutY="14.0" prefHeight="567.0" prefWidth="659.0" visible="true" />
+                                <TabPane layoutX="9.0" layoutY="0.0" prefHeight="419.0" prefWidth="756.0" tabClosingPolicy="UNAVAILABLE">
+                                  <tabs>
+                                    <Tab text="reportar">
+                                      <content>
+                                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                            <Pane id="ReporteP" fx:id="reporteP" layoutX="14.0" layoutY="14.0" prefHeight="255.0" prefWidth="472.0" visible="true">
+                                              <children>
+                                                <Label layoutX="14.0" layoutY="14.0" text="por favor agregue los datos del producto que desea reportar" />
+                                                <Label layoutX="14.0" layoutY="36.0" text="id producto:">
+                                                  <font>
+                                                    <Font size="14.0" fx:id="x3" />
+                                                  </font>
+                                                </Label>
+                                                <TextField id="id" fx:id="idreporteTF" disable="true" layoutX="14.0" layoutY="59.0" prefWidth="200.0" />
+                                                <Label font="$x3" layoutX="14.0" layoutY="91.0" text="Nombre producto:" />
+                                                <Label font="$x3" layoutX="14.0" layoutY="153.0" text="Cantidad:" />
+                                                <TextField id="cantrecibo" fx:id="cantreporteTF" layoutX="14.0" layoutY="176.0" prefWidth="200.0" />
+                                                <Button fx:id="aceptarReporteBT" layoutX="45.0" layoutY="206.0" mnemonicParsing="false" onAction="#valreporte" prefHeight="26.27734375" prefWidth="73.0" text="aceptar" />
+                                                <Label fx:id="idreporteval" layoutX="251.0" layoutY="62.0" text="por favor ingrese un nombre o id correcto" visible="false" />
+                                                <Label fx:id="cantreporteval" layoutX="251.0" layoutY="179.0" text="por favor ingrese una cantidad" visible="false" />
+                                                <ComboBox id="NomReciboTF" fx:id="reportprodCB" layoutX="15.0" layoutY="117.0" onAction="#reportarprod" onMouseEntered="#recibirProd" prefHeight="21.0" prefWidth="116.0">
+                                                  <items>
+                                                    <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="aguardiente" />
+                                                      <String fx:value="pilsen" />
+                                                      <String fx:value="aguila" />
+                                                    </FXCollections>
+                                                  </items>
+                                                </ComboBox>
+                                              </children>
+                                            </Pane>
+                                          </children>
+                                        </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                    <Tab text="Recibir">
+                                      <content>
+                                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                            <Pane id="ReporteP" fx:id="reciboP" layoutX="14.0" layoutY="-3.0" prefHeight="286.0" prefWidth="458.0" visible="true">
+                                              <children>
+                                                <Label id="cantreporteval" fx:id="cantreciboval" layoutX="223.0" layoutY="208.0" text="por favor ingrese una cantidad" visible="false" />
+                                                <Label font="$x3" layoutX="14.0" layoutY="109.0" text="Nombre producto:" />
+                                                <Label layoutX="13.0" layoutY="14.0" text="por favor agregue los datos del producto que desea recibir" />
+                                                <Label font="$x3" layoutX="13.0" layoutY="45.0" text="factura:" />
+                                                <TextField id="id" fx:id="idreciboTF" disable="false" layoutX="13.0" layoutY="74.0" prefWidth="200.0" />
+                                                <Label font="$x3" layoutX="14.0" layoutY="175.0" text="Cantidad:" />
+                                                <TextField id="cantrecibo" fx:id="cantreciboTF" disable="false" layoutX="14.0" layoutY="202.0" prefWidth="200.0" />
+                                                <Label id="idreporteval" fx:id="idreciboval" layoutX="221.0" layoutY="77.0" text="por favor ingrese un nombre o id correcto" visible="false" />
+                                                <Button fx:id="aceptarResiboBT" layoutX="17.0" layoutY="244.0" mnemonicParsing="false" onAction="#valrecibo" text="aceptar" />
+                                                <ComboBox id="NomReciboTF" fx:id="NomReciboCB" layoutX="14.0" layoutY="144.0" onMouseEntered="#recibirProd" prefHeight="21.0" prefWidth="116.0">
+                                                  <items>
+                                                    <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="aguardiente" />
+                                                      <String fx:value="pilsen" />
+                                                      <String fx:value="aguila" />
+                                                    </FXCollections>
+                                                  </items>
+                                                </ComboBox>
+                                              </children>
+                                            </Pane>
+                                          </children>
+                                        </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                  </tabs>
+                                </TabPane>
+                              </children>
+                            </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <fx:reference source="x5" />
+                      </panes>
+                    </Accordion>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="factura">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <VBox layoutX="14.0" layoutY="14.0" prefHeight="223.0" prefWidth="141.0">
+                      <children>
+                        <Button mnemonicParsing="false" onAction="#vercompra" prefHeight="65.0" prefWidth="127.0" text="VENTA" />
+                        <Button mnemonicParsing="false" onAction="#verventa" prefHeight="65.0" prefWidth="127.0" text="COMPRA" />
+                      </children>
+                    </VBox>
+                    <ScrollPane id="compra" fx:id="compraSP" layoutX="259.0" layoutY="14.0" prefHeight="803.0" prefWidth="711.0" visible="false">
+                      <content>
+                        <AnchorPane id="Content" fx:id="compra" minHeight="0.0" minWidth="0.0" prefHeight="802.0" prefWidth="696.0" visible="true">
+                          <children>
+                            <Label layoutX="66.0" layoutY="14.0" text="ID factura" />
+                            <Label layoutX="310.0" layoutY="17.0" text="Fecha" />
+                            <TextField disable="true" layoutX="14.0" layoutY="39.0" prefWidth="200.0" text="1" />
+                            <TextField fx:id="fechaVentTF" layoutX="234.0" layoutY="39.0" prefWidth="200.0" />
+                            <GridPane fx:id="grid1" layoutX="19.0" layoutY="209.0" prefHeight="97.0" prefWidth="619.0" visible="true">
+                              <children>
+                                <Label text="id producto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="iva" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label text="valor unitario" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label text="cantidad" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                <Label text="subtotal" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                <TextField disable="false" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField fx:id="canFacturaTF" disable="false" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField disable="false" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField disable="false" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField disable="false" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Label fx:id="valCantidadFac" text="ingrese un valor" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="10.0" prefWidth="95.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="48.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="86.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane fx:id="prod1" layoutX="19.0" layoutY="317.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField fx:id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal1" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button fx:id="menos1" mnemonicParsing="false" onAction="#quitarprincipal1" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="117.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="80.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="65.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="85.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="66.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="38.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" fx:id="prod3" layoutX="19.0" layoutY="512.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal3" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button fx:id="menos3" mnemonicParsing="false" onAction="#quitarprincipal3" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="87.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="72.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="90.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="78.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="89.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="60.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="45.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" fx:id="prod4" layoutX="19.0" layoutY="609.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipa4" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button fx:id="menos4" mnemonicParsing="false" onAction="#quitarprincipal4" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="92.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="70.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="88.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="77.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="90.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="60.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="44.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" fx:id="prod2" layoutX="19.0" layoutY="415.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal2" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button fx:id="menos2" mnemonicParsing="false" onAction="#quitarprincipal2" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="72.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="95.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="89.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="61.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="43.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" fx:id="prod5" layoutX="19.0" layoutY="705.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button fx:id="menos5" mnemonicParsing="false" onAction="#quitarprincipal5" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="85.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="71.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="94.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="77.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="88.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="59.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="47.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <Label layoutX="532.0" layoutY="17.0" text="Total" />
+                            <TextField layoutX="456.0" layoutY="39.0" prefWidth="200.0" />
+                            <GridPane layoutX="21.0" layoutY="119.0" prefWidth="538.0">
+                              <children>
+                                <Label text="Nombre" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="Apellido" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="Identificacion" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <TextField id="nonm" fx:id="nomClienteTF" disable="true" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField id="apeCLiente2TF" fx:id="apeCLienteTF" disable="true" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <ComboBox fx:id="clienteCB" onAction="#seleccionCliente" prefHeight="21.0" prefWidth="141.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                  <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                      <String fx:value="Jader" />
+                                      <String fx:value="Alberto" />
+                                    </FXCollections>
+                                  </items>
+                                </ComboBox>
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <Pane fx:id="busquedaConC" layoutX="133.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Cocacola" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Chivas" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Colina" />
+                              </children>
+                            </Pane>
+                            <Pane id="busquedaConC" layoutX="137.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Aguardiente Antioqueño" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Aguila Light" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Aguardiente Cristal" />
+                              </children>
+                            </Pane>
+                            <Pane id="busquedaConC" layoutX="137.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Pilsen" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Poker" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Piña Colada" />
+                              </children>
+                            </Pane>
+                            <Button layoutX="571.0" layoutY="155.0" mnemonicParsing="false" onAction="#crearNuevo" text="crear nuevo cliente" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </ScrollPane>
+                    <Pane id="AnularP" fx:id="AnularComP" layoutX="233.0" layoutY="14.0" prefHeight="322.0" prefWidth="342.0" visible="false">
+                      <children>
+                        <Button layoutX="176.0" layoutY="274.0" mnemonicParsing="false" text="aceptar" />
+                        <TextArea layoutX="14.0" layoutY="129.0" prefHeight="118.33999633789062" prefWidth="222.0" wrapText="true" />
+                        <Label layoutX="14.0" layoutY="94.0" text="Novedad" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Id factura" />
+                      </children>
+                    </Pane>
+                    <Pane id="AnularP" fx:id="AnularVenP" layoutX="233.0" layoutY="14.0" prefHeight="322.0" prefWidth="342.0" visible="false">
+                      <children>
+                        <Button layoutX="176.0" layoutY="274.0" mnemonicParsing="false" text="aceptar" />
+                        <TextArea layoutX="14.0" layoutY="129.0" prefHeight="118.33999633789062" prefWidth="222.0" wrapText="true" />
+                        <Label layoutX="14.0" layoutY="94.0" text="Novedad" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Id factura" />
+                        <GridPane fx:id="gridFactura" layoutX="-32.0" layoutY="30.0" prefWidth="141.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                        </GridPane>
+                      </children>
+                    </Pane>
+                    <ScrollPane id="compra" fx:id="ventaSP" layoutX="259.0" layoutY="14.0" prefHeight="803.0" prefWidth="711.0" visible="false">
+                      <content>
+                        <AnchorPane id="Content" fx:id="venta" minHeight="0.0" minWidth="0.0" prefHeight="802.0" prefWidth="674.0" visible="true">
+                          <children>
+                            <Label layoutX="66.0" layoutY="14.0" text="ID factura" />
+                            <Label layoutX="310.0" layoutY="17.0" text="Fecha" />
+                            <TextField layoutX="234.0" layoutY="39.0" prefWidth="200.0" />
+                            <GridPane id="grid1" layoutX="19.0" layoutY="209.0" prefHeight="97.0" prefWidth="619.0">
+                              <children>
+                                <Label text="id producto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="iva" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label text="valor unitario" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label text="cantidad" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                <Label text="subtotal" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="79.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="64.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="86.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="283.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="96.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal1" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos1" mnemonicParsing="false" onAction="#quitarprincipal1" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="117.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="80.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="65.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="85.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="66.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="38.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="478.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal3" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos3" mnemonicParsing="false" onAction="#quitarprincipal3" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="87.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="72.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="90.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="78.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="89.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="60.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="45.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="575.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipa4" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos4" mnemonicParsing="false" onAction="#quitarprincipal4" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="92.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="70.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="88.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="77.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="90.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="60.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="44.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="381.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal2" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos2" mnemonicParsing="false" onAction="#quitarprincipal2" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="72.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="95.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="89.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="61.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="43.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="671.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos5" mnemonicParsing="false" onAction="#quitarprincipal5" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="85.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="71.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="94.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="77.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="88.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="59.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="47.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <Label layoutX="532.0" layoutY="17.0" text="Total" />
+                            <TextField layoutX="456.0" layoutY="39.0" prefWidth="200.0" />
+                            <GridPane layoutX="21.0" layoutY="119.0" prefWidth="538.0">
+                              <children>
+                                <Label text="Nombre" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="Apellido" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="Identificacion" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <TextField id="nonm" disable="true" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField id="apeCLienteTF" disable="true" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <ComboBox id="clienteCB" onAction="#seleccionCliente" prefHeight="21.0" prefWidth="141.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                  <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                      <String fx:value="Jader" />
+                                      <String fx:value="Alberto" />
+                                    </FXCollections>
+                                  </items>
+                                </ComboBox>
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <Pane id="busquedaConC" layoutX="133.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Cocacola" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Chivas" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Colina" />
+                              </children>
+                            </Pane>
+                            <Pane id="busquedaConC" layoutX="137.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Aguardiente Antioqueño" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Aguila Light" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Aguardiente Cristal" />
+                              </children>
+                            </Pane>
+                            <Pane id="busquedaConC" layoutX="137.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Pilsen" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Poker" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Piña Colada" />
+                              </children>
+                            </Pane>
+                            <Button id="crearproveedorfac" layoutX="571.0" layoutY="153.0" mnemonicParsing="false" onAction="#crearproveedorfac" text="crear proveedor" />
+                            <TextField id="dia" fx:id="diaTF" layoutX="13.0" layoutY="39.0" prefWidth="45.0" promptText="dia" text="" />
+                            <TextField id="mes" fx:id="mesTF" layoutX="78.0" layoutY="39.0" prefWidth="45.0" promptText="mes" text="" />
+                            <TextField fx:id="anioTF" layoutX="146.0" layoutY="39.0" prefWidth="45.0" promptText="año" />
+                            <Label layoutX="63.0" layoutY="78.0" minWidth="0.0" prefWidth="0.0" text="/" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </ScrollPane>
+                    <Pane fx:id="emergenteCLienteP" layoutX="970.0" layoutY="174.0" prefHeight="571.0" prefWidth="359.0" visible="false">
+                      <children>
+                        <Label layoutX="8.0" layoutY="14.0" text="Nombre" />
+                        <TextField id="compra" fx:id="nomCLienteTF" layoutX="8.0" layoutY="41.0" prefWidth="200.0" />
+                        <Label layoutX="8.0" layoutY="80.0" text="Apellido" />
+                        <TextField id="apeCLienteTF" fx:id="apeCLiente2TF" layoutX="7.0" layoutY="107.0" prefWidth="200.0" />
+                        <Label layoutX="8.0" layoutY="141.0" text="tipo id" />
+                        <Label layoutX="8.0" layoutY="205.0" text="identificacion" />
+                        <TextField id="idCLienteTF" fx:id="idCLiente2TF" disable="true" layoutX="8.0" layoutY="232.0" prefWidth="200.0" />
+                        <Label layoutX="8.0" layoutY="269.0" text="direccion" />
+                        <TextField layoutX="8.0" layoutY="296.0" prefWidth="200.0" />
+                        <Label layoutX="8.0" layoutY="330.0" text="telefono" />
+                        <TextField layoutX="8.0" layoutY="357.0" prefWidth="200.0" />
+                        <Label layoutX="7.0" layoutY="393.0" text="E-mail" />
+                        <TextField layoutX="7.0" layoutY="420.0" prefWidth="200.0" />
+                        <Button layoutX="7.0" layoutY="471.0" mnemonicParsing="false" onAction="#valCLiente" text="aceptar" />
+                        <Button layoutX="108.0" layoutY="472.0" mnemonicParsing="false" onAction="#regresar" text="cancelar" />
+                        <ComboBox fx:id="tipoCLienteCB" layoutX="8.0" layoutY="173.0" onAction="#seleccionCliente2" prefHeight="21.0" prefWidth="200.0">
+                          <items>
+                            <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="cedula" />
+                              <String fx:value="otro" />
+                            </FXCollections>
+                          </items>
+                        </ComboBox>
+                        <Label fx:id="valNomCliente" layoutX="237.0" layoutY="44.0" text="ingrese un nombre" visible="false" />
+                        <Label fx:id="valapeCLiente" layoutX="237.0" layoutY="110.0" text="ingrese un apellido" visible="false" />
+                        <Label fx:id="validCliente" layoutX="237.0" layoutY="235.0" text="ingrese un id" visible="false" />
+                      </children>
+                    </Pane>
+                    <Pane fx:id="crearproveedorfacP" layoutX="970.0" layoutY="15.0" prefHeight="730.0" prefWidth="509.0" visible="false">
+                      <children>
+                        <Label layoutX="14.0" layoutY="45.0" text="nombre de la empresa" />
+                        <Label layoutX="14.0" layoutY="109.0" text="telefono" />
+                        <Label layoutX="14.0" layoutY="171.0" text="E-mail" />
+                        <TextField id="nomCTF" layoutX="14.0" layoutY="73.0" prefWidth="200.0" />
+                        <Line endX="438.0" endY="-3.0" layoutX="102.0" layoutY="354.0" startX="-111.0" startY="-2.0" />
+                        <Label layoutX="14.0" layoutY="10.0" text="Datos de el proveedor">
+                          <font>
+                            <Font name="System Bold" size="15.0" fx:id="x4" />
+                          </font>
+                        </Label>
+                        <Label layoutX="11.0" layoutY="394.0" text="nombre" />
+                        <Label layoutX="11.0" layoutY="457.0" text="apellido" />
+                        <TextField id="nomCTF" layoutX="11.0" layoutY="422.0" prefWidth="200.0" />
+                        <Label layoutX="14.0" layoutY="517.0" text="E-mail" />
+                        <TextField id="nomCTF" layoutX="14.0" layoutY="544.0" prefWidth="200.0" />
+                        <Label font="$x4" layoutX="11.0" layoutY="358.0" text="Datos Contacto" />
+                        <Button id="valcrearcuenta" layoutX="11.0" layoutY="642.0" mnemonicParsing="false" onAction="#valcrearproveedorfac" text="aceptar" />
+                        <Label id="valnomC" layoutX="268.0" layoutY="76.0" text="por favor ingrese el nombre de la empresa" visible="false" />
+                        <Label id="valcontC" layoutX="268.0" layoutY="139.0" text="por favor ingrese un telefono" visible="false" />
+                        <Label id="valnom2C" layoutX="266.0" layoutY="428.0" text="por favor ingrese un nombre" visible="false" />
+                        <Label id="valapeC" layoutX="266.0" layoutY="488.0" text="por favor ingrese un apellido" visible="false" />
+                        <Label layoutX="14.0" layoutY="247.0" text="Url" />
+                        <Label layoutX="14.0" layoutY="578.0" text="Celular" />
+                        <TextField id="nomCTF" layoutX="14.0" layoutY="605.0" prefWidth="200.0" />
+                        <Label layoutX="15.0" layoutY="300.0" text="Nit" />
+                        <TextField id="telEmTF" layoutX="14.0" layoutY="142.0" prefWidth="200.0" />
+                        <TextField id="emailEmTF" layoutX="14.0" layoutY="202.0" prefWidth="200.0" />
+                        <TextField id="urlEmTF" layoutX="14.0" layoutY="271.0" prefWidth="200.0" />
+                        <TextField layoutX="14.0" layoutY="328.0" prefWidth="200.0" />
+                        <TextField id="apeContTF" layoutX="11.0" layoutY="484.0" prefWidth="200.0" />
+                        <Label id="valemialprov1" layoutX="254.0" layoutY="202.0" text="debe ingresar un email" visible="false" />
+                        <Label id="valemialprov2" layoutX="268.0" layoutY="547.0" text="debe ingresar un email" visible="false" />
+                        <Button layoutX="106.0" layoutY="643.0" mnemonicParsing="false" onAction="#cancelarproveedor" text="cancelar" />
+                      </children>
+                    </Pane>
+                    <ScrollPane id="compra" fx:id="consVentaP" layoutX="240.0" layoutY="14.0" prefHeight="803.0" prefWidth="711.0" visible="false">
+                      <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="802.0" prefWidth="696.0" visible="true">
+                          <children>
+                            <Label layoutX="66.0" layoutY="14.0" text="ID factura" />
+                            <Label layoutX="310.0" layoutY="17.0" text="Fecha" />
+                            <TextField id="fechaVentTF" fx:id="fechaconvenTF" disable="true" layoutX="234.0" layoutY="39.0" prefWidth="200.0" />
+                            <GridPane id="grid1" layoutX="19.0" layoutY="209.0" prefHeight="97.0" prefWidth="619.0" visible="true">
+                              <children>
+                                <Label text="id producto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="iva" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label text="valor unitario" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label text="cantidad" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                <Label text="subtotal" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                <TextField fx:id="valunprodconvenTF" disable="true" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField id="canFacturaTF" fx:id="cantprodconvenTF" disable="true" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField fx:id="subtotprodconvenTF" disable="true" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField fx:id="idprodconvenTF" disable="true" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField fx:id="ivaprodconvenTF" disable="true" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Label id="valCantidadFac" text="ingrese un valor" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                <TextField fx:id="nomprodconvenTF" disable="true" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="10.0" prefWidth="95.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="48.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="86.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="317.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal1" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos1" mnemonicParsing="false" onAction="#quitarprincipal1" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="117.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="80.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="65.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="85.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="66.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="38.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="512.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal3" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos3" mnemonicParsing="false" onAction="#quitarprincipal3" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="87.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="72.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="90.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="78.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="89.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="60.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="45.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="609.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipa4" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos4" mnemonicParsing="false" onAction="#quitarprincipal4" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="92.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="70.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="88.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="77.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="90.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="60.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="44.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="415.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal2" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos2" mnemonicParsing="false" onAction="#quitarprincipal2" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="72.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="95.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="89.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="61.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="43.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="705.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos5" mnemonicParsing="false" onAction="#quitarprincipal5" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="85.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="71.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="94.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="77.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="88.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="59.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="47.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <Label layoutX="532.0" layoutY="17.0" text="Total" />
+                            <TextField id="totalcon" fx:id="totalconvenTF" disable="true" layoutX="456.0" layoutY="39.0" prefWidth="200.0" />
+                            <GridPane layoutX="21.0" layoutY="119.0" prefWidth="538.0">
+                              <children>
+                                <Label text="Nombre" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="Apellido" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="Identificacion" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <TextField id="nonm" fx:id="apellidoconvenTF" disable="true" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField id="apeCLiente2TF" fx:id="idconvenTF" disable="true" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <TextField fx:id="nombreconvenTF" disable="true" prefWidth="200.0" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <Pane id="busquedaConC" layoutX="133.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Cocacola" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Chivas" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Colina" />
+                              </children>
+                            </Pane>
+                            <Pane id="busquedaConC" layoutX="137.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Aguardiente Antioqueño" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Aguila Light" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Aguardiente Cristal" />
+                              </children>
+                            </Pane>
+                            <Pane id="busquedaConC" layoutX="137.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Pilsen" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Poker" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Piña Colada" />
+                              </children>
+                            </Pane>
+                            <ComboBox fx:id="seleccionventaCB" layoutX="51.0" layoutY="41.0" onAction="#seleccionventacon" prefHeight="21.0" prefWidth="162.0">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="1" />
+                                  <String fx:value="2" />
+                                  <String fx:value="3" />
+                                </FXCollections>
+                              </items>
+                            </ComboBox>
+                            <CheckBox fx:id="comboanular" layoutX="577.0" layoutY="153.0" mnemonicParsing="false" text="Anular venta" visible="false" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </ScrollPane>
+                    <Button layoutX="141.0" layoutY="37.0" mnemonicParsing="false" onAction="#anularCom" text="consultar" />
+                    <ScrollPane id="compra" fx:id="consCompraP" layoutX="233.0" layoutY="13.0" prefHeight="803.0" prefWidth="711.0" visible="false">
+                      <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="802.0" prefWidth="696.0" visible="true">
+                          <children>
+                            <Label layoutX="66.0" layoutY="14.0" text="ID factura" />
+                            <Label layoutX="310.0" layoutY="17.0" text="Fecha" />
+                            <TextField id="fechaVentTF" fx:id="fechaconcomTF" disable="true" layoutX="234.0" layoutY="39.0" prefWidth="200.0" />
+                            <GridPane id="grid1" layoutX="19.0" layoutY="209.0" prefHeight="97.0" prefWidth="619.0" visible="true">
+                              <children>
+                                <Label text="id producto" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="nombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="iva" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label text="valor unitario" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label text="cantidad" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                <Label text="subtotal" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+                                <TextField id="valunprodconvenTF" fx:id="valunprodconcomTF" disable="true" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField id="canFacturaTF" fx:id="cantprodconcomTF" disable="true" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField id="subtotprodconvenTF" fx:id="subtotprodconcomTF" disable="true" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="idprodconvenTF" fx:id="idprodconcomTF" disable="true" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField id="ivaprodconvenTF" fx:id="ivaprodconcomTF" disable="true" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Label id="valCantidadFac" text="ingrese un valor" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                <TextField id="nomprodconvenTF" fx:id="nomprodconcomTF" disable="true" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.0" minWidth="10.0" prefWidth="95.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="48.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="86.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="317.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal1" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos1" mnemonicParsing="false" onAction="#quitarprincipal1" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="117.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="80.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="65.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="107.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="85.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="66.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="38.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="512.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal3" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos3" mnemonicParsing="false" onAction="#quitarprincipal3" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="87.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="72.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="90.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="78.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="89.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="60.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="45.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="609.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipa4" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos4" mnemonicParsing="false" onAction="#quitarprincipal4" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="92.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="70.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="88.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="77.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="90.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="60.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="44.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="415.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" onAction="#agregarprincipal2" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos2" mnemonicParsing="false" onAction="#quitarprincipal2" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="82.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="72.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="95.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="79.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="89.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="61.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="43.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <GridPane id="prod1" layoutX="19.0" layoutY="705.0" prefHeight="97.0" prefWidth="641.0" visible="false">
+                              <children>
+                                <TextField prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <TextField id="ejm" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <TextField prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Button mnemonicParsing="false" text="+" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+                                <Button id="menos5" mnemonicParsing="false" onAction="#quitarprincipal5" text="-" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="120.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="85.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="71.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="94.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.0" minWidth="10.0" prefWidth="77.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="88.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="59.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.0" minWidth="10.0" prefWidth="47.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <Label layoutX="532.0" layoutY="17.0" text="Total" />
+                            <TextField id="totalcon" fx:id="totalconcomTF" disable="true" layoutX="456.0" layoutY="39.0" prefWidth="200.0" />
+                            <GridPane layoutX="21.0" layoutY="119.0" prefWidth="538.0">
+                              <children>
+                                <Label text="Nombre" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label text="Apellido" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label text="Identificacion" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <TextField id="nonm" fx:id="apellidoconcomTF" disable="true" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <TextField id="apeCLiente2TF" fx:id="idconcomTF" disable="true" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <TextField id="nombreconvenTF" fx:id="nombreconcomTF" disable="true" prefWidth="200.0" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                              </children>
+                              <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              </columnConstraints>
+                              <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              </rowConstraints>
+                            </GridPane>
+                            <Pane id="busquedaConC" layoutX="133.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Cocacola" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Chivas" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Colina" />
+                              </children>
+                            </Pane>
+                            <Pane id="busquedaConC" layoutX="137.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Aguardiente Antioqueño" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Aguila Light" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Aguardiente Cristal" />
+                              </children>
+                            </Pane>
+                            <Pane id="busquedaConC" layoutX="137.0" layoutY="270.0" prefHeight="200.0" prefWidth="87.0" visible="false">
+                              <children>
+                                <Label layoutX="7.0" layoutY="6.0" text="Pilsen" />
+                                <Label layoutX="7.0" layoutY="22.0" text="Poker" />
+                                <Label layoutX="7.0" layoutY="38.0" text="Piña Colada" />
+                              </children>
+                            </Pane>
+                            <ComboBox id="seleccionventaCB" fx:id="seleccioncompraCB" layoutX="51.0" layoutY="41.0" onAction="#seleccioncompracon" prefHeight="21.0" prefWidth="162.0">
+                              <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                  <String fx:value="1" />
+                                  <String fx:value="2" />
+                                  <String fx:value="3" />
+                                </FXCollections>
+                              </items>
+                            </ComboBox>
+                            <CheckBox id="comboanular" fx:id="comboanularcompra" layoutX="577.0" layoutY="153.0" mnemonicParsing="false" text="Anular venta" visible="false" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </ScrollPane>
+                    <Button layoutX="141.0" layoutY="105.0" mnemonicParsing="false" onAction="#anularVenta" text="consultar" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="reporte">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <TextField layoutX="73.0" layoutY="106.0" prefWidth="121.0" />
+                    <TextField layoutX="214.0" layoutY="106.0" prefWidth="121.0" />
+                    <Label layoutX="121.0" layoutY="71.0" text="fecha incio" />
+                    <Label layoutX="249.0" layoutY="71.0" text="fecha fin" />
+                    <Label layoutX="173.0" layoutY="196.0" text="dia mas rentable" />
+                    <Label layoutX="173.0" layoutY="249.0" text="dia menos rentable" />
+                    <Label layoutX="173.0" layoutY="293.0" text="producto mas rentable" />
+                    <Label layoutX="173.0" layoutY="336.0" text="producto menos rentable" />
+                    <Label layoutX="173.0" layoutY="382.0" text="ganancias" />
+                    <Label layoutX="419.0" layoutY="196.0" text="8/06/2013" />
+                    <Label layoutX="419.0" layoutY="249.0" text="7/06/2013" />
+                    <Label layoutX="419.0" layoutY="290.0" text="Aguardoemte Antioqueño" />
+                    <Label layoutX="419.0" layoutY="343.0" text="Chivas" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="configuracion">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="739.0" prefWidth="1479.0">
+                  <children>
+                    <VBox fx:id="emergenteC" layoutX="145.0" layoutY="14.0" prefHeight="72.0" prefWidth="82.0" visible="false">
+                      <children>
+                        <Button id="crear" fx:id="crearCBT" minHeight="15.9609375" mnemonicParsing="false" onAction="#regi" prefHeight="22.0" prefWidth="70.0" text="crear" />
+                        <Button fx:id="modificarCBT" mnemonicParsing="false" onAction="#modificarC" text="modificar" />
+                      </children>
+                    </VBox>
+                    <VBox id="emergenteC" fx:id="emergenteP" layoutX="145.0" layoutY="79.0" prefHeight="72.0" prefWidth="82.0" visible="false">
+                      <children>
+                        <Button id="crear" minHeight="15.9609375" mnemonicParsing="false" onAction="#registroP" prefHeight="22.0" prefWidth="70.0" text="crear" />
+                        <Button id="modificarCBT" mnemonicParsing="false" onAction="#modPP" text="modificar" />
+                      </children>
+                    </VBox>
+                    <VBox id="emergenteC" fx:id="emergenteCli" layoutX="143.0" layoutY="150.0" prefHeight="72.0" prefWidth="82.0" visible="false">
+                      <children>
+                        <Button id="crear" minHeight="15.9609375" mnemonicParsing="false" onAction="#regiCliente" prefHeight="22.0" prefWidth="70.0" text="crear" />
+                        <Button id="modificarCBT" mnemonicParsing="false" onAction="#modificarCliente" text="modificar" />
+                      </children>
+                    </VBox>
+                    <VBox layoutX="14.0" layoutY="14.0" prefHeight="194.9998779296875" prefWidth="129.0" visible="false">
+                      <children>
+                        <Button mnemonicParsing="false" onMouseEntered="#cuenta" prefHeight="65.0" prefWidth="131.0" text="Cuenta" />
+                        <Button mnemonicParsing="false" onMouseEntered="#proveedor" prefHeight="65.0" prefWidth="131.0" text="Provedor" />
+                        <Button mnemonicParsing="false" onAction="#cliente" onMouseEntered="#cliente" prefHeight="65.0" prefWidth="131.0" text="Cliente" />
+                      </children>
+                    </VBox>
+                    <Accordion layoutX="14.0" layoutY="2.0" prefHeight="560.0" prefWidth="901.0">
+                      <expandedPane>
+                        <TitledPane fx:id="x13" animated="false" text="Cuenta">
+                          <content>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                <TabPane layoutX="0.0" layoutY="6.0" prefHeight="517.0" prefWidth="854.0" tabClosingPolicy="UNAVAILABLE">
+                                  <tabs>
+                                    <Tab text="Crear">
+                                      <content>
+                                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="547.0" prefWidth="854.0">
+                                          <children>
+                                            <Accordion minWidth="433.0" prefHeight="433.0" prefWidth="433.0" AnchorPane.bottomAnchor="47.0" AnchorPane.rightAnchor="418.0">
+                                              <expandedPane>
+                                                <TitledPane fx:id="x12" animated="false" text="datos de la cuenta">
+                                                  <content>
+                                                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                      <children>
+                                                        <Label layoutX="13.0" layoutY="7.0" text="nombre de usuario" />
+                                                        <TextField fx:id="nomCTF" layoutX="13.0" layoutY="35.0" prefWidth="200.0" />
+                                                        <Label layoutX="13.0" layoutY="71.0" text="contraseña" />
+                                                        <PasswordField fx:id="contCTF" layoutX="13.0" layoutY="97.0" prefWidth="200.0" />
+                                                        <Label layoutX="13.0" layoutY="133.0" text="ingrese de nuevo la contraseña" />
+                                                        <PasswordField fx:id="recontCTF" layoutX="13.0" layoutY="166.0" prefWidth="200.0" />
+                                                        <Label fx:id="valnomC" layoutX="246.0" layoutY="35.0" text="por favor ingrese un nombre de usuario" visible="false" />
+                                                        <Label fx:id="valcontC" layoutX="246.0" layoutY="100.0" text="por favor ingrese una contraseña" visible="false" />
+                                                        <Label fx:id="valcoinC" layoutX="246.0" layoutY="166.0" text="las contraseñas no coinciden" visible="false" />
+                                                        <Label fx:id="valrecontC" layoutX="246.0" layoutY="161.0" text="re-ingrese de nuevo la contraseña" visible="false" />
+                                                        <Button id="valcrearcuenta" layoutX="14.0" layoutY="252.0" mnemonicParsing="false" onAction="#valcrearcuenta" prefHeight="34.0" prefWidth="129.0" text="aceptar" />
+                                                      </children>
+                                                    </AnchorPane>
+                                                  </content>
+                                                </TitledPane>
+                                              </expandedPane>
+                                              <panes>
+                                                <TitledPane fx:id="x6" animated="false" prefHeight="422.0" prefWidth="495.0" text="datos Personales">
+                                                  <content>
+                                                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="429.0">
+                                                      <children>
+                                                        <Label layoutX="11.0" layoutY="9.0" text="nombre" />
+                                                        <TextField id="nomCTF" fx:id="nom2CTF" layoutX="11.0" layoutY="37.0" prefWidth="200.0" />
+                                                        <Label layoutX="11.0" layoutY="72.0" text="apellido" />
+                                                        <TextField fx:id="apeCTF" layoutX="10.0" layoutY="102.0" prefWidth="200.0" />
+                                                        <Label layoutX="14.0" layoutY="132.0" text="telefono" />
+                                                        <TextField id="nomCTF" fx:id="telCTF" layoutX="11.0" layoutY="159.0" prefWidth="200.0" />
+                                                        <Label layoutX="14.0" layoutY="195.0" text="direccion" />
+                                                        <TextField fx:id="dirCTF" layoutX="14.0" layoutY="221.0" prefWidth="200.0" />
+                                                        <Label layoutX="14.0" layoutY="256.0" text="tipo de documento" />
+                                                        <ComboBox fx:id="TipoIDCB" layoutX="14.0" layoutY="282.0" onAction="#SeleccionTipo" prefHeight="21.0" prefWidth="105.0">
+                                                          <items>
+                                                            <FXCollections fx:factory="observableArrayList">
+                                                              <String fx:value="Cedula" />
+                                                              <String fx:value="Otro" />
+                                                            </FXCollections>
+                                                          </items>
+                                                        </ComboBox>
+                                                        <Label layoutX="14.0" layoutY="316.0" text="Identificacion" />
+                                                        <TextField fx:id="IDCuentaTF" disable="true" layoutX="14.0" layoutY="341.0" prefWidth="200.0" />
+                                                        <Label fx:id="valnom2C" layoutX="237.0" layoutY="40.0" text="por favor ingrese su nombre" visible="false" />
+                                                        <Label fx:id="valapeC" layoutX="237.0" layoutY="105.0" text="por favor ingrese su apellido" visible="false" />
+                                                        <Label fx:id="valtelC" layoutX="237.0" layoutY="162.0" text="por favor ingrese un telefono" visible="false" />
+                                                        <Label fx:id="valdirC" layoutX="237.0" layoutY="227.0" text="por favor ingrese una direccion" visible="false" />
+                                                        <Label fx:id="validentificacion" layoutX="230.0" layoutY="352.0" text="ingrese una identificacion" visible="false" />
+                                                      </children>
+                                                    </AnchorPane>
+                                                  </content>
+                                                </TitledPane>
+                                                <fx:reference source="x12" />
+                                              </panes>
+                                            </Accordion>
+                                          </children>
+                                        </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                    <Tab text="Modificar">
+                                      <content>
+                                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                            <Accordion layoutX="2.0" layoutY="8.0" prefHeight="399.0" prefWidth="449.0">
+                                              <expandedPane>
+                                                <TitledPane fx:id="x7" animated="false" text="Datos de la cuenta">
+                                                  <content>
+                                                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                      <children>
+                                                        <Label layoutX="14.0" layoutY="10.0" text="nombre de usuario" />
+                                                        <Label layoutX="14.0" layoutY="136.0" text="nueva contraseña" />
+                                                        <PasswordField id="recontCTF" fx:id="recontMTF" disable="true" layoutX="15.0" layoutY="169.0" prefWidth="200.0" />
+                                                        <ComboBox fx:id="nomCH" layoutX="15.0" layoutY="39.0" onAction="#ModificarS">
+                                                          <items>
+                                                            <FXCollections fx:factory="observableArrayList">
+                                                              <String fx:value="Daniel" />
+                                                              <String fx:value="Leonardo" />
+                                                              <String fx:value="Faber" />
+                                                            </FXCollections>
+                                                          </items>
+                                                        </ComboBox>
+                                                        <Button id="valcrearcuenta" layoutX="15.0" layoutY="235.0" mnemonicParsing="false" onAction="#valmodificarcuenta" prefHeight="34.0" prefWidth="129.0" text="aceptar" />
+                                                        <Label layoutX="14.0" layoutY="76.0" text="nuevo nombre" />
+                                                        <TextField fx:id="nomusMTF" disable="true" layoutX="14.0" layoutY="105.0" prefWidth="200.0" />
+                                                      </children>
+                                                    </AnchorPane>
+                                                  </content>
+                                                </TitledPane>
+                                              </expandedPane>
+                                              <panes>
+                                                <fx:reference source="x7" />
+                                                <TitledPane animated="false" prefHeight="378.0" prefWidth="449.0" text="datos personales">
+                                                  <content>
+                                                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                      <children>
+                                                        <Label layoutX="11.0" layoutY="10.0" text="nombre" />
+                                                        <Label layoutX="11.0" layoutY="73.0" text="apellido" />
+                                                        <TextField id="nomCTF" fx:id="nomMTF" disable="true" layoutX="11.0" layoutY="38.0" prefWidth="200.0" />
+                                                        <Label layoutX="14.0" layoutY="133.0" text="telefono" />
+                                                        <Label layoutX="14.0" layoutY="196.0" text="direccion" />
+                                                        <TextField id="nomCTF" fx:id="telMTF" disable="true" layoutX="14.0" layoutY="160.0" prefWidth="200.0" />
+                                                        <Label id="valnom2C" fx:id="valnomM" layoutX="267.0" layoutY="42.0" text="por favor ingrese un nombre" visible="false" />
+                                                        <Label id="valapeC" fx:id="valapeM" layoutX="267.0" layoutY="102.0" text="por favor ingrese su apellido" visible="false" />
+                                                        <Label id="valtelC" fx:id="valtelM" layoutX="267.0" layoutY="164.0" text="por favor ingrese su telefono" visible="false" />
+                                                        <Label id="valdirC" fx:id="valdirM" layoutX="266.0" layoutY="224.0" text="por favor ingrese su direccion" visible="false" />
+                                                        <TextField fx:id="dirMTF" disable="true" layoutX="11.0" layoutY="219.0" prefWidth="200.0" />
+                                                        <TextField fx:id="apeMTF" disable="true" layoutX="13.0" layoutY="96.0" prefWidth="200.0" />
+                                                        <Label layoutX="14.0" layoutY="238.0" text="Identificacion" />
+                                                        <Label layoutX="14.0" layoutY="297.0" text="tipo de documento" />
+                                                        <ComboBox fx:id="tipoidCentaMCB" layoutX="14.0" layoutY="323.0" prefHeight="21.0" prefWidth="105.0">
+                                                          <items>
+                                                            <FXCollections fx:factory="observableArrayList">
+                                                              <String fx:value="Cedula" />
+                                                              <String fx:value="Otro" />
+                                                            </FXCollections>
+                                                          </items>
+                                                        </ComboBox>
+                                                        <TextField fx:id="idMTF" disable="true" layoutX="11.0" layoutY="264.0" prefWidth="200.0" />
+                                                      </children>
+                                                    </AnchorPane>
+                                                  </content>
+                                                </TitledPane>
+                                              </panes>
+                                            </Accordion>
+                                          </children>
+                                        </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                  </tabs>
+                                </TabPane>
+                              </children>
+                            </AnchorPane>
+                          </content>
+                        </TitledPane>
+                      </expandedPane>
+                      <panes>
+                        <fx:reference source="x13" />
+                        <TitledPane fx:id="x8" animated="false" text="Proveedor">
+                          <content>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                <TabPane layoutX="14.0" layoutY="7.0" prefHeight="461.0" prefWidth="530.0" tabClosingPolicy="UNAVAILABLE">
+                                  <tabs>
+                                    <Tab text="Crear">
+                                      <content>
+                                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                            <Accordion layoutX="7.0" layoutY="14.0" prefHeight="376.0" prefWidth="448.0">
+                                              <expandedPane>
+                                                <TitledPane fx:id="x2" animated="false" text="Datos del contacto">
+                                                  <content>
+                                                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                      <children>
+                                                        <Label layoutX="14.0" layoutY="11.0" text="nombre" />
+                                                        <TextField id="nomCTF" fx:id="nomContTF" layoutX="14.0" layoutY="39.0" prefWidth="200.0" />
+                                                        <Label layoutX="14.0" layoutY="74.0" text="apellido" />
+                                                        <TextField fx:id="apeContTF" layoutX="14.0" layoutY="101.0" prefWidth="200.0" />
+                                                        <Label layoutX="17.0" layoutY="134.0" text="E-mail" />
+                                                        <TextField id="nomCTF" fx:id="emailContTF" layoutX="17.0" layoutY="161.0" prefWidth="200.0" />
+                                                        <Label layoutX="17.0" layoutY="195.0" text="Celular" />
+                                                        <TextField id="nomCTF" layoutX="17.0" layoutY="222.0" prefWidth="200.0" />
+                                                        <Label id="valnom2C" fx:id="valnomCont" layoutX="231.0" layoutY="42.0" text="por favor ingrese un nombre" visible="true" />
+                                                        <Label id="valapeC" fx:id="valapeCont" layoutX="231.0" layoutY="104.0" text="por favor ingrese un apellido" visible="true" />
+                                                        <Label fx:id="valemialprov2" layoutX="231.0" layoutY="164.0" text="debe ingresar un email" visible="true" />
+                                                      </children>
+                                                    </AnchorPane>
+                                                  </content>
+                                                </TitledPane>
+                                              </expandedPane>
+                                              <panes>
+                                                <fx:reference source="x2" />
+                                                <TitledPane animated="false" prefHeight="319.0" prefWidth="408.0" text="Datos del proveedor">
+                                                  <content>
+                                                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                      <children>
+                                                        <Label layoutX="5.0" layoutY="8.0" text="nombre de la empresa" />
+                                                        <TextField id="nomCTF" fx:id="nomEmTF" layoutX="5.0" layoutY="36.0" prefWidth="200.0" />
+                                                        <Label layoutX="5.0" layoutY="72.0" text="telefono" />
+                                                        <TextField fx:id="telEmTF" layoutX="5.0" layoutY="105.0" prefWidth="200.0" />
+                                                        <Label layoutX="5.0" layoutY="134.0" text="E-mail" />
+                                                        <TextField fx:id="emailEmTF" layoutX="5.0" layoutY="165.0" prefWidth="200.0" />
+                                                        <Label layoutX="5.0" layoutY="210.0" text="Url" />
+                                                        <TextField fx:id="urlEmTF" layoutX="5.0" layoutY="234.0" prefWidth="200.0" />
+                                                        <Label layoutX="6.0" layoutY="263.0" text="Nit" />
+                                                        <TextField layoutX="5.0" layoutY="291.0" prefWidth="200.0" />
+                                                        <Label id="valnomC" fx:id="valnomEm" layoutX="216.0" layoutY="39.0" text="por favor ingrese el nombre de la empresa" visible="true" />
+                                                        <Label id="valcontC" fx:id="valtelEm" layoutX="216.0" layoutY="111.0" text="por favor ingrese un telefono" visible="true" />
+                                                        <Label fx:id="valemialprov1" layoutX="216.0" layoutY="168.0" text="debe ingresar un email" visible="true" />
+                                                      </children>
+                                                    </AnchorPane>
+                                                  </content>
+                                                </TitledPane>
+                                              </panes>
+                                            </Accordion>
+                                            <Button id="valcrearcuenta" layoutX="9.0" layoutY="396.0" mnemonicParsing="false" onAction="#valcrearproveedor" text="aceptar" />
+                                          </children>
+                                        </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                    <Tab text="Modificar">
+                                      <content>
+                                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                            <Accordion layoutX="14.0" layoutY="14.0" prefHeight="362.0" prefWidth="498.0">
+                                              <expandedPane>
+                                                <TitledPane fx:id="x11" animated="false" text="Datos del contacto">
+                                                  <content>
+                                                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                      <children>
+                                                        <Label layoutX="14.0" layoutY="14.0" text="nombre" />
+                                                        <Label layoutX="14.0" layoutY="77.0" text="apellido" />
+                                                        <Label layoutX="17.0" layoutY="137.0" text="telefono" />
+                                                        <Label layoutX="17.0" layoutY="200.0" text="correo" />
+                                                        <TextField id="nomCTF" fx:id="nomContMTF" disable="true" layoutX="14.0" layoutY="42.0" prefWidth="200.0" />
+                                                        <TextField id="nomCTF" fx:id="telContMTF" disable="true" layoutX="17.0" layoutY="164.0" prefWidth="200.0" />
+                                                        <TextField id="dirMTF" fx:id="emailContMTF" disable="true" layoutX="14.0" layoutY="223.0" prefWidth="200.0" />
+                                                        <Label id="valnom2C" fx:id="valnomContM" layoutX="236.0" layoutY="42.0" text="por favor ingrese un nombre" visible="true" />
+                                                        <Label id="valapeC" fx:id="valapeContM" layoutX="236.0" layoutY="102.0" text="por favor ingrese su apellido" visible="true" />
+                                                        <Label id="valtelC" fx:id="valtelContM" layoutX="236.0" layoutY="164.0" text="por favor ingrese un telefono" visible="true" />
+                                                        <Label id="valdirC" fx:id="valcorreoContM" layoutX="235.0" layoutY="224.0" text="por favor ingrese una direccion de correo" visible="true" />
+                                                        <Label fx:id="valemialprov3" layoutX="236.0" layoutY="226.0" text="debe ingresar un email" visible="true" />
+                                                      </children>
+                                                    </AnchorPane>
+                                                  </content>
+                                                </TitledPane>
+                                              </expandedPane>
+                                              <panes>
+                                                <TitledPane fx:id="x10" animated="false" text="Datos Del proveedor">
+                                                  <content>
+                                                    <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                      <children>
+                                                        <ComboBox id="nomCH" fx:id="provCH" layoutX="11.0" layoutY="43.0" onAction="#Modificarproveedor">
+                                                          <items>
+                                                            <FXCollections fx:factory="observableArrayList">
+                                                              <String fx:value="Frito lay" />
+                                                              <String fx:value="Bavaria" />
+                                                              <String fx:value="Panda Pan" />
+                                                            </FXCollections>
+                                                          </items>
+                                                        </ComboBox>
+                                                        <Label layoutX="12.0" layoutY="14.0" text="nombre de Proveedor" />
+                                                        <Label layoutX="12.0" layoutY="78.0" text="nombre Empresa" />
+                                                        <Label layoutX="12.0" layoutY="140.0" text="telefono" />
+                                                        <Label layoutX="13.0" layoutY="209.0" text="E-mail" />
+                                                        <TextField id="telETF" fx:id="telPMTF" disable="true" layoutX="13.0" layoutY="175.0" prefWidth="200.0" />
+                                                        <TextField id="nomETF" fx:id="nomPMTF" disable="true" layoutX="13.0" layoutY="103.0" prefWidth="200.0" />
+                                                        <TextField id="apeMTF" fx:id="apeContMTF" disable="true" layoutX="12.0" layoutY="402.0" prefWidth="200.0" />
+                                                        <TextField id="emailTF" fx:id="emailPTF" disable="true" layoutX="14.0" layoutY="244.0" prefWidth="200.0" />
+                                                        <Label id="valcontC" fx:id="valnomProveedor" layoutX="232.0" layoutY="106.0" text="por favor ingrese un nombre" visible="true" />
+                                                        <Label id="valrecontC" fx:id="valtelProveedor" layoutX="230.0" layoutY="178.0" text="por favor ingrese un telefono" visible="true" />
+                                                        <Label fx:id="valemialprov4" layoutX="230.0" layoutY="250.0" text="debe ingresar un email" visible="true" />
+                                                        <Label id="valdirC" fx:id="valcorreoProveedor" layoutX="232.0" layoutY="250.0" text="por favor ingrese una direccion de correo" visible="true" />
+                                                      </children>
+                                                    </AnchorPane>
+                                                  </content>
+                                                </TitledPane>
+                                                <fx:reference source="x11" />
+                                              </panes>
+                                            </Accordion>
+                                            <Button id="valcrearcuenta" layoutX="16.0" layoutY="386.0" mnemonicParsing="false" onAction="#valmodificarproveedor" text="aceptar" />
+                                          </children>
+                                        </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                  </tabs>
+                                </TabPane>
+                              </children>
+                            </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" expanded="false" text="Cliente">
+                          <content>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                <TabPane layoutX="14.0" layoutY="14.0" prefHeight="371.0" prefWidth="426.0" tabClosingPolicy="UNAVAILABLE">
+                                  <tabs>
+                                    <Tab text="Crear">
+                                      <content>
+                                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                            <Label layoutX="14.0" layoutY="14.0" text="nombre" />
+                                            <TextField id="nomCTF" layoutX="14.0" layoutY="42.0" prefWidth="200.0" />
+                                            <Label layoutX="14.0" layoutY="77.0" text="apellido" />
+                                            <TextField layoutX="17.0" layoutY="106.0" prefWidth="200.0" />
+                                            <Label layoutX="17.0" layoutY="137.0" text="Tipo Documento" />
+                                            <ComboBox fx:id="tipoDocClienteCB" layoutX="17.0" layoutY="165.0" prefHeight="21.0" prefWidth="141.0">
+                                              <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                  <String fx:value="Cedula" />
+                                                  <String fx:value="otro" />
+                                                </FXCollections>
+                                              </items>
+                                            </ComboBox>
+                                            <Label layoutX="17.0" layoutY="201.0" text="Num documento" />
+                                            <PasswordField id="contCTF" layoutX="17.0" layoutY="228.0" prefWidth="200.0" />
+                                            <Button id="valcrearcuenta" layoutX="17.0" layoutY="285.0" mnemonicParsing="false" onAction="#valcrearcuenta" text="aceptar" />
+                                          </children>
+                                        </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                    <Tab text="Modificar">
+                                      <content>
+                                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                          <children>
+                                            <Label layoutX="12.0" layoutY="6.0" text="nombre" />
+                                            <Label layoutX="12.0" layoutY="59.0" text="apellido" />
+                                            <Label layoutX="15.0" layoutY="119.0" text="telefono" />
+                                            <Button id="valcrearcuenta" layoutX="17.0" layoutY="319.0" mnemonicParsing="false" onAction="#valModificarCliente" text="aceptar" />
+                                            <Label id="valnom2C" layoutX="270.0" layoutY="243.0" text="por favor ingrese un nombre" visible="false" />
+                                            <Label id="valapeC" layoutX="270.0" layoutY="303.0" text="por favor ingrese su apellido" visible="false" />
+                                            <Label id="valtelC" layoutX="270.0" layoutY="365.0" text="por favor ingrese su telefono" visible="false" />
+                                            <Label id="valdirC" layoutX="269.0" layoutY="425.0" text="por favor ingrese su direccion" visible="false" />
+                                            <TextField id="dirMTF" fx:id="telModClienteTF" disable="true" layoutX="15.0" layoutY="144.0" prefWidth="200.0" />
+                                            <ComboBox id="nomCH" fx:id="NomModClienteCB" layoutX="12.0" layoutY="23.0" onAction="#SeleccionClienteMod">
+                                              <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                  <String fx:value="Daniel" />
+                                                  <String fx:value="Leonardo" />
+                                                  <String fx:value="Faber" />
+                                                </FXCollections>
+                                              </items>
+                                            </ComboBox>
+                                            <TextField id="apeMTF" fx:id="apeModClienteTF" disable="true" layoutX="14.0" layoutY="82.0" prefWidth="200.0" />
+                                            <Label layoutX="15.0" layoutY="182.0" text="tipo de documento" />
+                                            <ComboBox id="tipoidCentaMCB" fx:id="tipDocModClienteCB" layoutX="15.0" layoutY="208.0" prefHeight="21.0" prefWidth="105.0" promptText="cedula">
+                                              <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                  <String fx:value="Cedula" />
+                                                  <String fx:value="Otro" />
+                                                </FXCollections>
+                                              </items>
+                                            </ComboBox>
+                                            <Label layoutX="17.0" layoutY="243.0" text="Identificacion" />
+                                            <TextField fx:id="idModClienteTF" layoutX="14.0" layoutY="269.0" prefWidth="200.0" />
+                                            <Label fx:id="valapeClientemod" layoutX="257.0" layoutY="85.0" text="ingrese un apellido" visible="false" />
+                                            <Label fx:id="valtelClientemod" layoutX="257.0" layoutY="147.0" text="ingrese un telefono" visible="false" />
+                                            <Label fx:id="validClientemod" layoutX="257.0" layoutY="272.0" prefHeight="19.951171875" text="ingrese un id" visible="false" />
+                                          </children>
+                                        </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                  </tabs>
+                                </TabPane>
+                              </children>
+                            </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" expanded="false" text="Producto">
+                          <content>
+                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <children>
+                                <Pane fx:id="PproductosMaestra" layoutX="-341.0" layoutY="-210.0" prefHeight="600.0" prefWidth="883.0" visible="true">
+                                  <children>
+                                    <TabPane layoutX="14.0" layoutY="14.0" prefHeight="181.0" prefWidth="694.0" tabClosingPolicy="UNAVAILABLE" visible="true">
+                                      <tabs>
+                                        <Tab text="Marca">
+                                          <content>
+                                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="231.0" prefWidth="694.0">
+                                              <children>
+                                                <ComboBox fx:id="ProductoPrueba" layoutX="100.0" layoutY="65.0">
+                                                  <items>
+                                                    <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="Leonardo" />
+                                                      <String fx:value="Faber" />
+                                                      <String fx:value="Daniel" />
+                                                    </FXCollections>
+                                                  </items>
+                                                </ComboBox>
+                                                <ComboBox layoutX="276.0" layoutY="66.0">
+                                                  <items>
+                                                    <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="Item 1" />
+                                                      <String fx:value="Item 2" />
+                                                      <String fx:value="Item 3" />
+                                                    </FXCollections>
+                                                  </items>
+                                                </ComboBox>
+                                                <TextField layoutX="50.0" layoutY="14.0" prefWidth="200.0" promptText="regeyhefyey" />
+                                              </children>
+                                            </AnchorPane>
+                                          </content>
+                                        </Tab>
+                                        <Tab text="Presentacion">
+                                          <content>
+                                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                          </content>
+                                        </Tab>
+                                        <Tab text="Clasificacion">
+                                          <content>
+                                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                          </content>
+                                        </Tab>
+                                        <Tab text="Medida">
+                                          <content>
+                                            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                          </content>
+                                        </Tab>
+                                      </tabs>
+                                    </TabPane>
+                                  </children>
+                                </Pane>
+                              </children>
+                            </AnchorPane>
+                          </content>
+                        </TitledPane>
+                      </panes>
+                    </Accordion>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+      </children>
+    </Pane>
+    <Pane layoutX="2.0" layoutY="0.0" prefHeight="153.0" prefWidth="1357.0" visible="true">
+      <children>
+        <ImageView fitHeight="163.17714839882407" fitWidth="1311.1763916015625" layoutX="0.0" layoutY="0.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+            <Image url="@banner_salsipuedes_largo.png" />
+          </image>
+        </ImageView>
+        <Button layoutX="822.0" layoutY="80.0" mnemonicParsing="false" onAction="#cerrarSesion" text="cerrar sesion" />
+      </children>
+    </Pane>
+    <Pane fx:id="login" layoutX="128.0" layoutY="197.0" prefHeight="457.0" prefWidth="557.0" visible="false">
+      <children>
+        <Label layoutX="185.0" layoutY="23.0" text="INICIAR SESION">
+          <font>
+            <Font size="26.0" />
+          </font>
+        </Label>
+        <Label layoutX="84.0" layoutY="161.0" text="Nombre" />
+        <Label layoutX="84.0" layoutY="244.0" text="Contraseña" />
+        <TextField id="nomlogin" fx:id="nomloginTF" layoutX="260.0" layoutY="161.0" prefWidth="200.0" />
+        <Button id="logear" layoutX="260.0" layoutY="292.0" mnemonicParsing="false" onAction="#logear" text="Aceptar" />
+        <Label fx:id="valLogin" layoutX="184.0" layoutY="121.0" text="nombre o contraseña incorrectos" visible="false" />
+        <PasswordField fx:id="contraloginTF" layoutX="260.0" layoutY="244.0" prefWidth="200.0" />
+      </children>
+    </Pane>
+  </children>
+  <stylesheets>
+    <URL value="@style.css" />
+  </stylesheets>
+</AnchorPane>
